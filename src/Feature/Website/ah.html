@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vertical Slider</title>
+    <!-- Slick Slider CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick-theme.css"/>
+    <style>
+        /* Custom styles for the slider */
+        .MainProduct__GalleryContainer {
+            width: 300px; /* Adjust width as needed */
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        .slick-slide {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 400px; /* Adjust height as needed */
+            overflow: hidden;
+        }
+        .slick-slide img {
+            width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="MainProduct__GalleryContainer" id="gallery">
+        <div>
+            <a href="https://neemans.com/cdn/shop/files/ND_-_TSP_-_White_Tan_8_800x.jpg?v=1722596503">
+                <img src="https://neemans.com/cdn/shop/files/ND_-_TSP_-_White_Tan_8_800x.jpg?v=1722596503" alt="White Tan 1">
+            </a>
+        </div>
+        <div>
+            <a href="https://neemans.com/cdn/shop/files/ND_-_TSP_-_White_Tan_2_800x.jpg?v=1722596502">
+                <img src="https://neemans.com/cdn/shop/files/ND_-_TSP_-_White_Tan_2_800x.jpg?v=1722596502" alt="White Tan 2">
+            </a>
+        </div>
+        <div>
+            <a href="https://neemans.com/cdn/shop/files/ND_-_TSP_-_White_Tan_3_800x.jpg?v=1722596503">
+                <img src="https://neemans.com/cdn/shop/files/ND_-_TSP_-_White_Tan_3_800x.jpg?v=1722596503" alt="White Tan 3">
+            </a>
+        </div>
+        <div>
+            <a href="https://neemans.com/cdn/shop/files/ND_-_TSP_-_White_Tan_4_800x.jpg?v=1722596503">
+                <img src="https://neemans.com/cdn/shop/files/ND_-_TSP_-_White_Tan_4_800x.jpg?v=1722596503" alt="White Tan 4">
+            </a>
+        </div>
+        <!-- Add more slides as needed -->
+    </div>
+
+    <!-- Slick Slider JS -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#gallery').slick({
+                vertical: true,
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                arrows: true,
+                dots: true,
+                infinite: true,
+                autoplay: false, // Disable autoplay to use mouse wheel
+                pauseOnHover: true,
+                initialSlide: 0, // Ensure the first image is shown initially
+            });
+
+            // Listen to mouse wheel event to control slide movement
+            $('#gallery').on('wheel', function(e) {
+                e.preventDefault();
+                if (e.originalEvent.deltaY < 0) {
+                    $(this).slick('slickPrev'); // Scroll up: move to previous slide
+                } else {
+                    $(this).slick('slickNext'); // Scroll down: move to next slide
+                }
+            });
+        });
+    </script>
+</body>
+</html>
